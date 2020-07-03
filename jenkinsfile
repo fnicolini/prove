@@ -22,7 +22,7 @@ pipeline {
         		checkout scm 
         		withSonarQubeEnv('sonarqube') { 
         			script {
-  					sh('cd $SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin && chmod +x sonar-scanner.sh && sonar-scanner.sh')
+  					sh('cd $SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin && chmod +x sonar-scanner && sonar-scanner')
 					} // If you have configured more than one global server connection, you can specify its name"
     			}		
         	}
