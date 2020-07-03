@@ -1,18 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
-        	agent{
-        		docker { 
-        			image 'python:3.7.8-stretch'  
-        		}
-        	}
-            steps {
-            	sh 'pip install Pylint'
-                sh 'echo "Hello World"'
-				sh 'ls -lah'
-            }
-        }
         stage('sonarqube analysis')
         {	
         	environment{
@@ -20,9 +8,21 @@ pipeline {
     		}
         	steps{
         		withSonarQubeEnv('sonarqube') {  // If you have configured more than one global server connection, you can specify its name
-      				sh "../../../$SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner"
+      				sh "$SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner"
     			}		
         	}
+        }
+        stage('build') {
+         agent{
+        	docker { 
+        		image 'python:3.7.8-stretch'  
+        	}
+         }
+        steps {
+            sh 'pip install Pylint'
+            sh 'echo "Hello World"'
+			sh 'ls -lah'
+          }
         }
     }
 }
