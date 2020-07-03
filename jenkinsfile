@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment{
-    	scannerHome = tool 'SonarScanner4'
-    }
     stages {
         stage('build') {
         	agent{
@@ -17,7 +14,10 @@ pipeline {
             }
         }
         stage('sonarqube analysis')
-        {
+        {	
+        	environment{
+    			scannerHome = tool 'SonarScanner4'
+    		}
         	steps{
         		withSonarQubeEnv('sonarqube') { 
         			sh 'pwd' // If you have configured more than one global server connection, you can specify its name
