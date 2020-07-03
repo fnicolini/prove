@@ -20,7 +20,7 @@ pipeline {
         {
         	steps{
         		withSonarQubeEnv('sonarqube') { // If you have configured more than one global server connection, you can specify its name
-      				sh "${scannerHome}/bin/sonar-scanner"
+      				sh "var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/${scannerHome}/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner"
     			}		
         	}
         }
