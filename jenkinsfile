@@ -20,7 +20,7 @@ pipeline {
     		}
         	steps{
         		withSonarQubeEnv('sonarqube') {  // If you have configured more than one global server connection, you can specify its name
-      				sh "./$SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner"
+      				sh "$WORKSPACE/$SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner"
     			}		
         	}
         }
