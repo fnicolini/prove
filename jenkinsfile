@@ -8,6 +8,7 @@ pipeline {
         		}
         	}
             steps {
+            	sh 'pip install Pylint'
                 sh 'echo "Hello World"'
 				sh 'ls -lah'
             }
