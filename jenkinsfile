@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-    	scannerHome = tool 'SonarScanner4'
+    	scannerHome = "SonarScanner4"
     }
     stages {
         stage('build') {
@@ -16,11 +16,11 @@ pipeline {
 				sh 'ls -lah'
             }
         }
-        stage('Sonarqube')
+        stage('sonarqube analysis')
         {
         	steps{
         		withSonarQubeEnv('sonarqube') { // If you have configured more than one global server connection, you can specify its name
-      				sh "/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarScanner4/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner"
+      				sh "${scannerHome}/sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner"
     			}		
         	}
         }
