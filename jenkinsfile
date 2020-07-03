@@ -19,8 +19,9 @@ pipeline {
     			SCANNER_HOME = tool 'SonarScanner4'
     		}
         	steps{
+        		checkout scm 
         		withSonarQubeEnv('sonarqube') { 
-        			dir("$SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin"){
+        			dir("$SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin "){
   						sh "./sonar-scanner"
 					} // If you have configured more than one global server connection, you can specify its name"
     			}		
