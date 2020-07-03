@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-    	scannerHome = tool 'SonarScanner 4.0'
+    	scannerHome = tool 'SonarScanner4'
     }
     stages {
         stage('build') {
@@ -19,7 +19,7 @@ pipeline {
         stage('Sonarqube')
         {
         	steps{
-        		withSonarQubeEnv('My SonarQube Server') { // If you have configured more than one global server connection, you can specify its name
+        		withSonarQubeEnv('sonarqube') { // If you have configured more than one global server connection, you can specify its name
       				sh "${scannerHome}/bin/sonar-scanner"
     			}		
         	}
