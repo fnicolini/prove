@@ -8,8 +8,8 @@ services:
      - 8080:8080
      - 5000:5000
     volumes:
-     - ./data/jenkins:/var/jenkins_home
-     - /var/run/docker.sock:/var/run/docker.sock
+     - '/data/jenkins:/var/jenkins_home'
+     - '/var/run/docker.sock:/var/run/docker.sock'
   sonarqube:
     image: sonarqube:latest
     container_name: sonar-container
@@ -20,8 +20,8 @@ services:
        - sonar.embeddedDatabase.port=9092
 
     ports:
-      - "9000:9000"
-      - "9092:9092"
+      - 9000:9000
+      - 9092:9092
     volumes:
       - '/data/sonar/conf:/opt/sonarqube/conf'
       - '/data/sonar/data:/opt/sonarqube/data'

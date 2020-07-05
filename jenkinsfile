@@ -18,8 +18,7 @@ pipeline {
         	environment{
     			SCANNER_HOME = tool 'SonarScanner4'
     		}
-        	steps{
-        		checkout scm 
+        	steps{ 
         		withSonarQubeEnv('sonarqube') { 
         			script {
   					sh('cd $SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin && sonar-scanner')
