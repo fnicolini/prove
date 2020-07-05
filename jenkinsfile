@@ -22,7 +22,7 @@ pipeline {
         		withSonarQubeEnv('sonarqube') { 
         			script {
         			sh'#!/bin/bash'
-  					sh('cd $SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin && ls')
+  					sh('cd $SCANNER_HOME/sonar-scanner-4.2.0.1873-linux/bin && ls -lah')
 					} // If you have configured more than one global server connection, you can specify its name"
     			}		
         	}
