@@ -23,9 +23,8 @@ pipeline {
         			def exists = fileExists 'requirements.txt'
         			if(exists){
         				sh 'pip install -r requirements.txt'
-        				sh 'bandit -r sources/* -o bandit-report.json'
+        				sh 'bandit -r sources/* -o bandit --format json --output bandit-report.json --recursive src'
         				stash(name: 'bandit-report', includes: 'bandit-report')
-        				sh 'ls'
         			}
         		}        	
         	}
@@ -38,6 +37,7 @@ pipeline {
         	steps{ 
         		withSonarQubeEnv('sonarqube') { 
         			script {
+        			sh('ls')
         			sh('cp sonar-project.properties $SCANNER_HOME/bin')
   					sh('cd $SCANNER_HOME/bin && chmod +X sonar-scanner && ./sonar-scanner' )
 					} // If you have configured more than one global server connection, you can specify its name"
