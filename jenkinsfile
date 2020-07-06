@@ -23,8 +23,8 @@ pipeline {
         			def exists = fileExists 'requirements.txt'
         			if(exists){
         				sh 'pip install -r requirements.txt'
-        				sh 'bandit -r sources/* -o reports/bandit-reports'
-        				stash(name: 'bandit-reports', includes: 'reports/*') 
+        				sh 'bandit -r sources/* -o bandit-report'
+        				stash(name: 'bandit-reports', includes: 'bandit-report') 
         			}
         		}        	
         	}
