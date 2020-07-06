@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   jenkins:
     image: jenkinsci/blueocean
@@ -23,8 +23,8 @@ services:
       - 9000:9000
       - 9092:9092
     volumes:
-      - '/data/sonar/conf:/opt/sonarqube/conf'
-      - '/data/sonar/data:/opt/sonarqube/data'
-      - '/data/sonar/extensions:/opt/sonarqube/extensions'
+      - './data/sonar/conf:/conf'
+      - './data/sonar/data:/data'
+      - './data/sonar/extensions:/extensions'
   
 

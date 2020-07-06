@@ -1,0 +1,5 @@
+Y99M933NavssRip
+
+sudo usermod -a -G docker jenkins # add jenkins to docker group
+
+groupmod -g <YOUR_HOST_DOCKER_GID> docker # set the same GID of docker host
