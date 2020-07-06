@@ -1,17 +1,22 @@
 pipeline {
-    agent {
-    	docker{
-    		image 'python:3.7.8-stretch'
-    	}
+    agent any
     }
     stages {
         stage('build') {
+        	agent {
+    		 docker{
+    			image 'python:3.7.8-stretch'
+    		}
             steps {
                 sh 'echo "Hello World"'
 				sh 'ls -lah'
             }
         }
         stage('install dependencies'){
+        	agent {
+    		 docker{
+    			image 'python:3.7.8-stretch'
+    		}
         	steps{
         		script{
         			def exists = fileExists 'requirements.txt'
