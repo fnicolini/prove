@@ -21,7 +21,7 @@ pipeline {
         	steps{ 
         		withSonarQubeEnv('sonarqube') { 
         			script {
-  					sh('cd $SCANNER_HOME/bin && chmod +X sonar-scanner && ./sonar-scanner -X -Dsonar.projectKey=test-node-js -Dsonar.sources=. -Dsonar.host.url=http://127.0.0.1:9000')
+  					sh('cd $SCANNER_HOME/bin && chmod +X sonar-scanner && ./sonar-scanner -X -Dsonar.projectKey=test-node-js -Dsonar.sources=. -Dsonar.host.url=http://192.168.1.151:9000')
 					} // If you have configured more than one global server connection, you can specify its name"
     			}		
         	}
