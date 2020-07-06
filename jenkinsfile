@@ -23,6 +23,7 @@ pipeline {
         			def exists = fileExists 'requirements.txt'
         			if(exists){
         				sh 'pip install -r requirements.txt'
+        				sh 'bandit -r sources/* -o reports'
         			}
         		}        	
         	}
@@ -35,7 +36,7 @@ pipeline {
         	steps{ 
         		withSonarQubeEnv('sonarqube') { 
         			script {
-  					sh('cd $SCANNER_HOME/bin && chmod +X sonar-scanner && ./sonar-scanner -X -Dsonar.projectKey=python-analyzer -Dsonar.sources=. -Dsonar.host.url=http://192.168.1.151:9000 -Dsonar.projectBaseDir=/var/jenkins_home/workspace/prove_master/sources')
+  					sh('cd $SCANNER_HOME/bin && chmod +X sonar-scanner && ./sonar-scanner' )
 					} // If you have configured more than one global server connection, you can specify its name"
     			}		
         	}
