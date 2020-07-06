@@ -15,9 +15,11 @@ pipeline {
         stage('install dependencies'){
         	steps{
         		def exists = fileExists 'requirements.txt'
-        		if(exists){
-        			sh 'pip install -r requirements.txt'
-        		}
+        		script{
+        			if(exists){
+        				sh 'pip install -r requirements.txt'
+        			}
+        		}        	
         	}
         }
         stage('sonarqube analysis')
