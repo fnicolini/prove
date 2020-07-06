@@ -24,7 +24,7 @@ pipeline {
         			if(exists){
         				sh 'pip install -r requirements.txt'
         				sh 'bandit -r sources/* -o bandit-report'
-        				stash(name: 'bandit-reports', includes: 'bandit-report')
+        				stash(name: 'bandit-report', includes: 'bandit-report')
         				sh 'ls'
         			}
         		}        	
