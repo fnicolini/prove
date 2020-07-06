@@ -8,10 +8,17 @@ pipeline {
         		}
         	}
             steps {
-            	sh 'pip install Pylint'
                 sh 'echo "Hello World"'
 				sh 'ls -lah'
             }
+        }
+        stage('install dependencies'){
+        	steps{
+        		def exists = fileExists 'requirements.txt'
+        		if(exists){
+        			sh 'pip install -r requirements.txt'
+        		}
+        	}
         }
         stage('sonarqube analysis')
         {	
